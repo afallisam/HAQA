@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HAQA Hospital — Join Our Founding Team</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #0B1F3A;
+      --teal:  #00A89B;
+      --teal2: #00C4B5;
+      --gold:  #C8973A;
+      --white: #FFFFFF;
+      --light: #F4F7FA;
+      --text:  #1A202C;
+      --muted: #4A5568;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh; min-height: 640px;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background: url('haqa_img/exterior.jpeg') center center / cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(6,14,31,0.4) 0%,
+        rgba(6,14,31,0.55) 50%,
+        rgba(6,14,31,0.88) 100%
+      );
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      padding: 0 24px;
+      max-width: 860px;
+      width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,168,155,0.18);
+      border: 1px solid rgba(0,168,155,0.45);
+      color: var(--teal2);
+      font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; padding: 7px 18px; border-radius: 24px;
+      margin-bottom: 26px;
+    }
+    .badge::before { content:'●'; font-size:7px; animation: blink 1.8s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.15} }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      font-weight: 800; line-height: 1.1;
+      color: var(--white); letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+    .hero h1 em { font-style: normal; color: var(--teal2); }
+    .hero-sub {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: rgba(255,255,255,0.72);
+      font-weight: 300; line-height: 1.65; margin-bottom: 10px;
+    }
+    .hero-location {
+      font-size: 0.88rem; color: var(--gold);
+      font-weight: 500; margin-bottom: 40px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hero-stats {
+      display: flex; gap: 0; flex-wrap: wrap; justify-content: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px; overflow: hidden;
+      backdrop-filter: blur(12px);
+      margin-bottom: 40px;
+    }
+    .stat {
+      padding: 18px 32px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 1.85rem; font-weight: 800; color: var(--teal2); line-height: 1; }
+    .stat-label { font-size: 0.67rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.3px; margin-top: 5px; }
+    .cta-group { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block; padding: 14px 36px; border-radius: 7px;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: all 0.22s; letter-spacing: 0.3px;
+    }
+    .btn-primary { background: var(--teal); color: var(--white); border: 2px solid var(--teal); }
+    .btn-primary:hover { background: var(--teal2); border-color: var(--teal2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,168,155,0.4); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.35); }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; text-align: center; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--navy); margin-bottom: 16px; line-height: 1.18; letter-spacing: -0.5px; text-align: center; }
+    .section-lead { font-size: 1rem; color: var(--muted); line-height: 1.78; max-width: 600px; margin: 0 auto; text-align: center; }
+
+    /* ── GALLERY STRIP ── */
+    .gallery { background: var(--navy); padding: 0; overflow: hidden; }
+    .gallery-track {
+      display: flex;
+      animation: scroll-gallery 28s linear infinite;
+      width: max-content;
+    }
+    .gallery-track:hover { animation-play-state: paused; }
+    .gallery-img { height: 260px; width: 420px; flex-shrink: 0; object-fit: cover; opacity: 0.88; transition: opacity 0.3s; }
+    .gallery-img:hover { opacity: 1; }
+    @keyframes scroll-gallery {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--light); }
+    .about-intro { text-align: center; margin-bottom: 60px; }
+    .about-intro .section-lead { margin: 0 auto; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .about-pillars { display: flex; flex-direction: column; gap: 22px; }
+    .pillar { display: flex; gap: 16px; align-items: flex-start; }
+    .pillar-dot {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(0,168,155,0.12); border: 1.5px solid rgba(0,168,155,0.3);
+      display: flex; align-items: center; justify-content: center; font-size: 17px;
+    }
+    .pillar-body strong { display: block; font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 5px; }
+    .pillar-body span { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    .about-card { background: var(--navy); border-radius: 20px; padding: 44px; color: var(--white); position: relative; overflow: hidden; }
+    .about-card::before { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%; background:rgba(0,168,155,0.1); }
+    .about-card::after  { content:''; position:absolute; bottom:-40px; left:-40px; width:140px; height:140px; border-radius:50%; background:rgba(200,151,58,0.08); }
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; position: relative; z-index: 1; }
+    .kpi-val { font-size: 2rem; font-weight: 800; color: var(--teal2); line-height: 1; }
+    .kpi-lbl { font-size: 0.73rem; color: rgba(255,255,255,0.55); margin-top: 5px; line-height: 1.5; }
+    .divider { height: 1px; background: rgba(255,255,255,0.1); margin: 28px 0; position: relative; z-index:1; }
+    .card-row { position:relative; z-index:1; display:flex; gap:14px; align-items:flex-start; }
+    .card-row-icon { font-size: 22px; flex-shrink: 0; }
+    .card-row-body strong { display:block; font-size:0.95rem; font-weight:600; margin-bottom:4px; color: var(--white); }
+    .card-row-body span { font-size:0.82rem; color:rgba(255,255,255,0.55); line-height:1.6; }
+
+    /* ── SPECIALTIES ── */
+    .specialties { background: var(--white); }
+    .spec-counts {
+      display: flex; gap: 48px; justify-content: center;
+      margin: 36px 0 52px;
+    }
+    .sc-item { text-align: center; }
+    .sc-val { font-size: 2.8rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .sc-lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .spec-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .spec-group {
+      background: var(--light); border-radius: 14px; padding: 26px;
+      border: 1.5px solid transparent; transition: all 0.22s;
+    }
+    .spec-group:hover { border-color: var(--teal); box-shadow: 0 8px 28px rgba(0,168,155,0.1); transform: translateY(-3px); }
+    .sg-head { display:flex; align-items:center; gap:10px; margin-bottom:18px; padding-bottom:14px; border-bottom:1.5px solid rgba(0,0,0,0.07); }
+    .sg-icon { width:38px; height:38px; border-radius:9px; background:var(--navy); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .sg-title { font-size:0.88rem; font-weight:700; color:var(--navy); }
+    .spec-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .spec-list li { display:flex; align-items:center; gap:9px; font-size:0.84rem; color: var(--text); line-height:1.35; font-weight: 400; }
+    .spec-list li::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+
+    /* ── INTERIOR GALLERY ── */
+    .interiors { background: var(--navy); padding: 96px 0; }
+    .interiors .container { padding: 0 24px; }
+    .interiors .section-tag { color: var(--teal2); }
+    .interiors .section-title { color: var(--white); }
+    .interiors .section-lead { color: rgba(255,255,255,0.55); margin-bottom: 0; }
+    .int-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 48px; }
+    .int-card { overflow: hidden; position: relative; }
+    .int-img { width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block; transition: transform 0.4s, opacity 0.3s; opacity: 0.9; }
+    .int-img:hover { opacity: 1; transform: scale(1.03); }
+    .int-wide { grid-column: span 2; aspect-ratio: 21/8; }
+    .int-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 12px 18px;
+      background: linear-gradient(to top, rgba(6,14,31,0.8), transparent);
+      font-size: 0.78rem; color: rgba(255,255,255,0.8); font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── VIDEOS ── */
+    .videos { background: var(--light); }
+    .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 48px; }
+    .video-card { border-radius: 14px; overflow: hidden; box-shadow: 0 6px 28px rgba(0,0,0,0.12); background: var(--navy); }
+    .video-card iframe { display:block; width:100%; height:260px; border:none; }
+    .video-caption { padding: 16px 20px; }
+    .video-caption strong { display:block; color:var(--white); font-size:0.9rem; margin-bottom:5px; }
+    .video-caption span { font-size:0.8rem; color:rgba(255,255,255,0.52); line-height: 1.5; }
+
+    /* ── WHY JOIN ── */
+    .why { background: var(--white); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+    .why-card {
+      padding: 32px 28px; border-radius: 14px;
+      border: 1.5px solid #E2E8F0;
+      transition: all 0.22s; position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .why-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--teal); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.07); transform: translateY(-4px); }
+    .why-icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .why-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.72; }
+
+    /* ── APPLY ── */
+    .apply {
+      background: linear-gradient(150deg, #060e1f 0%, #0b1f3a 55%, #0d2b4e 100%);
+      color: var(--white); text-align: center; position: relative; overflow: hidden;
+    }
+    .apply::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,168,155,0.13) 0%, transparent 70%); }
+    .apply-inner { position: relative; z-index:1; display: flex; flex-direction: column; align-items: center; }
+    .apply .section-title { color: var(--white); }
+    .apply .section-lead { color:rgba(255,255,255,0.6); margin:0 auto 40px; }
+    .apply-email {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 9px; padding: 14px 32px; margin-bottom: 28px;
+      color: var(--white); font-size: 1.05rem; font-weight: 500;
+      text-decoration: none; transition: all 0.22s;
+    }
+    .apply-email:hover { background:rgba(0,168,155,0.18); border-color:var(--teal); }
+    .apply-note { margin-top:24px; font-size:0.78rem; color:rgba(255,255,255,0.3); max-width: 440px; text-align: center; }
+
+    /* ── FOOTER ── */
+    footer { background:#040a14; color:rgba(255,255,255,0.3); text-align:center; padding:28px 24px; font-size:0.78rem; display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:wrap; }
+    footer span { color:rgba(255,255,255,0.55); }
+    footer a { color:rgba(255,255,255,0.35); text-decoration:none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .spec-groups { grid-template-columns: 1fr 1fr; }
+      .int-grid { grid-template-columns: 1fr; }
+      .int-wide { grid-column: span 1; aspect-ratio: 16/10; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .spec-counts { gap: 28px; }
+    }
+    @media (max-width: 600px) {
+      .stat { padding: 14px 16px; }
+      .stat-num { font-size: 1.4rem; }
+      .spec-groups { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .hero-stats { width: 100%; }
+      .spec-counts { flex-wrap: wrap; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="badge">Now Recruiting — Opening 2027</div>
+    <h1>Shape the Future of<br/><em>Healthcare in Algeria</em></h1>
+    <p class="hero-sub">Join HAQA — a landmark tertiary hospital setting a new standard<br/>for clinical excellence in North Africa.</p>
+    <div class="hero-location">📍 Sidi Abdallah, New City · Algiers, Algeria</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">300</div>
+        <div class="stat-label">Beds</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">60K m²</div>
+        <div class="stat-label">Built Area</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Operating Theatres</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">OPD Clinics</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2027</div>
+        <div class="stat-label">Opening</div>
+      </div>
+    </div>
+    <div class="cta-group">
+      <a href="#apply" class="btn btn-primary">Apply Now</a>
+      <a href="#specialties" class="btn btn-outline">Clinical Scope</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AUTO-SCROLL GALLERY ══ -->
+<div class="gallery" aria-hidden="true">
+  <div class="gallery-track">
+    <img class="gallery-img" src="haqa_img/lobby.jpeg"        alt="Lobby"/>
+    <img class="gallery-img" src="haqa_img/reception.jpeg"    alt="Reception"/>
+    <img class="gallery-img" src="haqa_img/patientroom.jpeg"  alt="Patient Room"/>
+    <img class="gallery-img" src="haqa_img/nursestation.jpeg" alt="Nurse Station"/>
+    <img class="gallery-img" src="haqa_img/corridor.jpeg"     alt="Corridor"/>
+    <img class="gallery-img" src="haqa_img/lobby.jpeg"        alt="Lobby"/>
+    <img class="gallery-img" src="haqa_img/reception.jpeg"    alt="Reception"/>
+    <img class="gallery-img" src="haqa_img/patientroom.jpeg"  alt="Patient Room"/>
+    <img class="gallery-img" src="haqa_img/nursestation.jpeg" alt="Nurse Station"/>
+    <img class="gallery-img" src="haqa_img/corridor.jpeg"     alt="Corridor"/>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section class="about">
+  <div class="container">
+    <div class="about-intro">
+      <div class="section-tag">About HAQA</div>
+      <h2 class="section-title">Algeria's Most Advanced Private Hospital</h2>
+      <p class="section-lead">
+        The Hospital Algéro-Qatari-Allemand (HAQA) is a joint venture between Algeria's National Investment Fund (FNI) and Qatari investors — purpose-built to international standards in Sidi Abdallah, Algiers.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-dot">🏗️</div>
+          <div class="pillar-body">
+            <strong>Purpose-Built Greenfield Facility</strong>
+            <span>60,000 m² designed from the ground up to JCI-aligned standards — every space engineered for clinical excellence and patient comfort.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-dot">🌍</div>
+          <div class="pillar-body">
+            <strong>International Partnership</strong>
+            <span>Developed by Algerian Qatari Healthcare Services Company (AQHCSC) and operated by an international management team with deep MENA expertise.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-dot">🚀</div>
+          <div class="pillar-body">
+            <strong>~950 Direct Jobs From Day One</strong>
+            <span>Join the founding team and help define the institution — clinical protocols, operational culture, and patient care standards — before opening day.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <div class="kpi-grid">
+          <div>
+            <div class="kpi-val">USD 287M</div>
+            <div class="kpi-lbl">Total Investment</div>
+          </div>
+          <div>
+            <div class="kpi-val">60,000 m²</div>
+            <div class="kpi-lbl">Built-Up Area</div>
+          </div>
+          <div>
+            <div class="kpi-val">300</div>
+            <div class="kpi-lbl">Licensed Beds</div>
+          </div>
+          <div>
+            <div class="kpi-val">Tertiary</div>
+            <div class="kpi-lbl">Level of Care</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-row">
+          <div class="card-row-icon">📍</div>
+          <div class="card-row-body">
+            <strong>Sidi Abdallah, Algiers</strong>
+            <span>Algeria's flagship new city development — a planned urban hub west of Algiers, serving a catchment of millions.</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card-row">
+          <div class="card-row-icon">🏛️</div>
+          <div class="card-row-body">
+            <strong>MOPH Licensed Institution</strong>
+            <span>Authorization to establish a Private Hospital Institution granted by Algeria's Ministry of Public Health, February 2025.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPECIALTIES ══ -->
+<section class="specialties" id="specialties">
+  <div class="container">
+    <div class="section-tag">Clinical Scope</div>
+    <h2 class="section-title">Full-Spectrum Tertiary Care</h2>
+    <p class="section-lead">HAQA covers all major clinical disciplines — from emergency and critical care through complex surgery, oncology, women's health, and rehabilitation.</p>
+
+    <div class="spec-counts">
+      <div class="sc-item">
+        <div class="sc-val">12</div>
+        <div class="sc-lbl">Operating Theatres</div>
+      </div>
+      <div class="sc-item">
+        <div class="sc-val">30+</div>
+        <div class="sc-lbl">Critical Care Beds</div>
+      </div>
+      <div class="sc-item">
+        <div class="sc-val">57</div>
+        <div class="sc-lbl">Outpatient Clinics</div>
+      </div>
+    </div>
+
+    <div class="spec-groups">
+      <div class="spec-group">
+        <div class="sg-head">
+          <div class="sg-icon">🚑</div>
+          <div class="sg-title">Emergency & Critical Care</div>
+        </div>
+        <ul class="spec-list">
+          <li>Emergency Medicine</li>
+          <li>Intensive Care Unit (ICU)</li>
+          <li>High Dependency Unit (HDU)</li>
+          <li>Cardiac Care Unit (CCU)</li>
+          <li>Paediatric ICU (PICU)</li>
+          <li>Resuscitation & Trauma</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <div class="sg-head">
+          <div class="sg-icon">✂️</div>
+          <div class="sg-title">Surgery</div>
+        </div>
+        <ul class="spec-list">
+          <li>General Surgery</li>
+          <li>Cardiac Surgery & Catheterisation</li>
+          <li>Orthopaedic Surgery</li>
+          <li>Bariatric Surgery</li>
+          <li>Day Surgery</li>
+          <li>Endoscopy</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <div class="sg-head">
+          <div class="sg-icon">❤️</div>
+          <div class="sg-title">Medical Specialties</div>
+        </div>
+        <ul class="spec-list">
+          <li>Cardiology</li>
+          <li>Internal Medicine</li>
+          <li>Pulmonology</li>
+          <li>Gastroenterology</li>
+          <li>Neurology</li>
+          <li>Nephrology & Dialysis</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <div class="sg-head">
+          <div class="sg-icon">🔬</div>
+          <div class="sg-title">Oncology</div>
+        </div>
+        <ul class="spec-list">
+          <li>Medical Oncology</li>
+          <li>Chemotherapy</li>
+          <li>Radiotherapy</li>
+          <li>Brachytherapy</li>
+          <li>Bone Marrow Transplant</li>
+          <li>Nuclear Medicine</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <div class="sg-head">
+          <div class="sg-icon">🤱</div>
+          <div class="sg-title">Women & Children</div>
+        </div>
+        <ul class="spec-list">
+          <li>Obstetrics & Maternity</li>
+          <li>Gynaecology</li>
+          <li>Labour, Delivery & Recovery</li>
+          <li>Neonatology (NICU / SCBU)</li>
+          <li>Paediatrics</li>
+          <li>Well-Baby Nursery</li>
+        </ul>
+      </div>
+      <div class="spec-group">
+        <div class="sg-head">
+          <div class="sg-icon">🩺</div>
+          <div class="sg-title">Diagnostics & Allied Health</div>
+        </div>
+        <ul class="spec-list">
+          <li>Radiology & Medical Imaging</li>
+          <li>Nuclear Medicine</li>
+          <li>Laboratory & Pathology</li>
+          <li>Rehabilitation Medicine</li>
+          <li>Ophthalmology</li>
+          <li>Dental</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INTERIOR GALLERY ══ -->
+<section class="interiors">
+  <div class="container">
+    <div class="section-tag">Inside HAQA</div>
+    <h2 class="section-title">A World-Class Environment</h2>
+    <p class="section-lead">Every space designed with patients and clinical teams in mind — from the grand entrance atrium to private rooms and clinical workspaces.</p>
+  </div>
+  <div style="margin-top:48px;">
+    <div class="int-grid">
+      <div class="int-card">
+        <img class="int-img int-wide" src="haqa_img/lobby.jpeg" alt="HAQA Main Atrium"/>
+        <div class="int-label">Main Atrium & Lobby</div>
+      </div>
+      <div class="int-card">
+        <img class="int-img" src="haqa_img/reception.jpeg" alt="Reception"/>
+        <div class="int-label">Main Reception</div>
+      </div>
+      <div class="int-card">
+        <img class="int-img" src="haqa_img/patientroom.jpeg" alt="Patient Room"/>
+        <div class="int-label">Private Patient Room</div>
+      </div>
+      <div class="int-card">
+        <img class="int-img" src="haqa_img/nursestation.jpeg" alt="Nurse Station"/>
+        <div class="int-label">Clinical Nurse Station</div>
+      </div>
+      <div class="int-card">
+        <img class="int-img" src="haqa_img/corridor.jpeg" alt="Corridor"/>
+        <div class="int-label">Patient Corridor & Waiting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEOS ══ -->
+<section class="videos" id="videos">
+  <div class="container">
+    <div class="section-tag">The Project in Progress</div>
+    <h2 class="section-title">Watch It Rise</h2>
+    <p class="section-lead">Follow the real progress of HAQA at Sidi Abdallah — from strategic vision to accelerated construction.</p>
+    <div class="video-grid">
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/WlV67tYDbS0"
+          title="وتيرة إنجاز متسارعة لاستكمال مشروع المستشفى الجزائري - القطري"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        <div class="video-caption">
+          <strong>Accelerated Construction Progress</strong>
+          <span>Rapid works underway to complete the Algerian-Qatari Hospital project.</span>
+        </div>
+      </div>
+      <div class="video-card">
+        <iframe src="https://www.youtube.com/embed/G8vkuomQ4p8"
+          title="المستشفى الجزائري-القطري.. مشروع استراتيجي لرعاية صحية بمعايير عالمية"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        <div class="video-caption">
+          <strong>A Strategic Project for World-Class Healthcare</strong>
+          <span>An in-depth look at HAQA — a landmark investment in Algeria's healthcare future.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY JOIN ══ -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-tag">Why HAQA</div>
+    <h2 class="section-title">Why Join Our Founding Team</h2>
+    <p class="section-lead">A once-in-a-generation opportunity to build something that matters — from the inside out.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏗️</div>
+        <h3>Build From Day One</h3>
+        <p>Join before opening and help define clinical pathways, departmental culture, and operational standards. Founding team members shape the institution.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌐</div>
+        <h3>International Standards</h3>
+        <p>Work in a facility designed to JCI-aligned standards with advanced diagnostic and surgical technology across all major clinical disciplines.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <h3>Career Growth Platform</h3>
+        <p>Structured development pathways, leadership tracks, and access to international clinical education programs aligned with accreditation requirements.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💼</div>
+        <h3>Competitive Packages</h3>
+        <p>Compensation benchmarked to regional and international standards. Full relocation support available for international candidates.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3>Multidisciplinary Culture</h3>
+        <p>Work alongside a diverse team of clinicians, operators, and allied health professionals — integrated care built around patient outcomes.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <h3>Real Impact</h3>
+        <p>Serve millions of patients who have never had access to this level of care. Be part of something Algeria — and the region — will remember.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APPLY ══ -->
+<section class="apply" id="apply">
+  <div class="container">
+    <div class="apply-inner">
+      <div class="section-tag" style="color:var(--teal2)">Recruitment Open</div>
+      <h2 class="section-title">Ready to Be Part of History?</h2>
+      <p class="section-lead">We are assembling our founding clinical and operational team — physicians, nurses, allied health, and support professionals across all disciplines.</p>
+      <a href="mailto:careers@haqa.dz" class="apply-email">📩 &nbsp; careers@haqa.dz</a>
+      <a href="mailto:careers@haqa.dz" class="btn btn-primary">Send Your Application</a>
+      <p class="apply-note">Include your specialty, current role, and a brief note on what drives you. We read every application.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <span>HAQA — Hospital Algéro-Qatari-Allemand</span>
+  &nbsp;·&nbsp; Sidi Abdallah, Algiers, Algeria
+  &nbsp;·&nbsp; Opening 2027
+  &nbsp;·&nbsp; <a href="https://aqhcsc.com" target="_blank">aqhcsc.com</a>
+  &nbsp;·&nbsp; © 2026 AQHCSC
+</footer>
+
+</body>
+</html>
